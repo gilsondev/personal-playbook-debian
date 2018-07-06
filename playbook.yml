@@ -1,0 +1,10 @@
+---
+- hosts: other_machine
+  roles:
+    - quickstart
+    # - internet
+    # - multimedia
+    # - graphics
+    # - office
+    # - development
+    # - extensions

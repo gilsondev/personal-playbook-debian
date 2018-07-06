@@ -1,0 +1,8 @@
+---
+- name: 'Install Office apps'
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - calibre

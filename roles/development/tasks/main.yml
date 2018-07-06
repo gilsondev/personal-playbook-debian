@@ -1,0 +1,27 @@
+---
+- name: 'Install Virtualbox'
+  dnf:
+    name: VirtualBox
+    state: present
+  become: yes
+
+- name: 'Install Terminal apps'
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - zsh
+    - neovim
+    - tmux
+
+- name: 'Install Development tools'
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - gitg
+    - pgmodeler
+    - zeal
+    - code

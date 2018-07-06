@@ -1,0 +1,6 @@
+---
+- name: 'Install Gnome Extension Dash to Dock'
+  dnf:
+    name: gnome-shell-extension-dash-to-dock
+    state: latest
+  become: yes

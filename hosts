@@ -1,0 +1,8 @@
+[local]
+localhost ansible_connection=local
+
+[other_machine]
+192.168.0.10
+
+[test]
+192.168.33.10 ansible_user=vagrant ansible_ssh_pass=vagrant

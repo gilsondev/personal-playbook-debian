@@ -1,0 +1,64 @@
+---
+- name: 'Add Google Chrome Repository'
+  copy:
+    src: 'files/google-chrome.repo'
+    dest: '/etc/yum.repos.d/google-chrome.repo'
+  become: yes
+
+- name: 'Install Google Chrome Stable'
+  dnf:
+    name: 'google-chrome-stable'
+    state: present
+  become: yes
+
+- name: 'Install Hangouts plugin'
+  dnf:
+    name: 'https://dl.google.com/linux/direct/google-talkplugin_current_x86_64.rpm'
+    state: present
+  become: yes
+
+- name: 'Install Dropbox'
+  dnf:
+    name: 'https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2015.10.28-1.fedora.x86_64.rpm'
+    state: present
+  become: yes
+
+- name: 'Install Skype dependencies'
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - wget
+    - alsa-lib
+    - pulseaudio
+    - glibc
+    - libXv
+    - libXScrnSaver
+
+- name: 'Install Skype'
+  dnf:
+    name: 'https://go.skype.com/skypeforlinux-64.rpm'
+    state: present
+  become: yes
+
+- name: 'Install Flash'
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - flash-plugin
+    - alsa-plugins-pulseaudio
+    - libcurl
+    - flash-player-ppapi
+
+- name: 'Install Internet apps'
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - youtube-dl
+    - transmission
+    - telegram-desktop

@@ -1,0 +1,28 @@
+---
+- name: 'Install group Multimedia'
+  dnf:
+    name: '@multimedia'
+    state: present
+  become: yes
+
+- name: 'Instal VLC'
+  dnf:
+    name: 'vlc'
+    state: present
+  become: yes
+
+- name: 'Install GStreamer plugins'
+  dnf:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+    - gstreamer-ffmpeg
+    - gstreamer-plugins-bad
+    - gstreamer-plugins-bad-nonfree
+
+- name: 'Install Spotify Client'
+  dnf:
+    name: 'spotify-client'
+    state: present
+  become: yes
